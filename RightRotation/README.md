@@ -9,5 +9,5 @@
 - Place Last Element at the Start: The stored last element is placed in the first position.
 
 <p align="center">
-<img src="assets/Java Right Rotation.jpg" alt="Java Right Rotation" width=600/>
+<img src="../assets/Java Right Rotation.jpg" alt="Java Right Rotation" width=600/>
 </p>
