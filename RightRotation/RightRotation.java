@@ -14,7 +14,7 @@ import java.util.Arrays;
 // 4 5 1 2 3
 
 class RightRotation {
-    private static void rotate(int[] arr, int steps) {
+    private static void rotate2(int[] arr, int steps) {
         int shift = steps % arr.length;
         for (int shiftIndex = 0; shiftIndex < shift; shiftIndex++) {
             int temp = arr[arr.length-1];
@@ -28,6 +28,32 @@ class RightRotation {
 
             arr[0] = temp;
             System.out.println(Arrays.toString(arr));
+        }
+    }
+
+    private static void rotate(int[] arr, int steps) {
+        int n = arr.length;
+        steps = steps % n;
+        if (steps < 0) {
+            steps += n;
+        }
+        
+        // Reverse the whole array
+        reverse(arr, 0, n - 1);
+        // Reverse the first part
+        reverse(arr, 0, steps - 1);
+        // Reverse the second part
+        reverse(arr, steps, n - 1);
+    }
+
+    // Helper method to reverse a portion of the array
+    private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
         }
     }
 
