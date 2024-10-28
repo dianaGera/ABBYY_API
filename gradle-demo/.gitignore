@@ -1,0 +1,34 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore Gradle build files
+!gradle/wrapper/gradle-wrapper.jar
+
+# Ignore IDE-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+.DS_Store
+.vscode/
+
+# Ignore Gradle caches and logs
+.gradle/
+.gradle/caches/
+.gradle/workerMain/
+.gradle/daemon/
+.gradle/wrapper/dists/
+.gradle/wrapper/gradle-wrapper.properties.lock
+gradle-app.setting
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+out/
+
+# Ignore generated project files
+bin/
+out/
