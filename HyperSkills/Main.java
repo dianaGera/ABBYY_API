@@ -1,34 +1,57 @@
-package HyperSkills;
-import java.io.*;
+import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        // Read an integer from the input
-        String integerStr = reader.readLine();
-        int integer;
-        try {
-            integer = Integer.parseInt(integerStr);
-        } catch (Exception e) {
-            System.out.println("Invalid input!");
-            return;
-        }
-        
+    private static String message;
+    private static int errorCode;
 
-        // Read a string from the input
-        String string = reader.readLine();
-        if (integer > 0) {
-            for (int i = 0; i <= integer; i++ ) {
-                System.out.println(string);
+    public static void main(String[] args) {
+
+        final Scanner scanner = new Scanner(System.in);
+        message = scanner.nextLine();
+        errorCode = Integer.parseInt(scanner.nextLine());
+
+        startLongProcess(new Callback() {
+            public void onStarted() {
+                System.out.println("The process started");
             }
-        } else if (integer == 0) {
-            System.out.println(string);
-        }
-        // } 
-        // else {
-        //     System.out.println("Invalid input!");
-        // }
+            public void onStopped(String cause) {
+                System.out.println(cause);
+            }
+            public void onFinished(int code) {
+                if (code == 0) {
+                    System.out.println("The process successfully finished");
+                } else {
+                    System.out.println("The process is finished with error: " + code);
+                }
+            }
+        });
 
+    }
+
+    public static void startLongProcess(Callback callback) {
+        callback.onStarted();
+        callback.onStopped(message);
+        callback.onStarted();
+        callback.onFinished(errorCode);
+    }
+
+}
+
+interface Callback {
+
+    void onStarted();
+
+    void onStopped(String cause);
+
+    void onFinished(int code);
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        CreateInstance instance = new CreateInstance();
+        SuperClass myClass = instance.create();
     }
 }
